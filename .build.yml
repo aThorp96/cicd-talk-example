@@ -1,4 +1,6 @@
 image: ubuntu/lts
+environment:
+    PATH: /usr/bin:/home/build/.cargo/bin
 packages:
     - curl
 sources:
