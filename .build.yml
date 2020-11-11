@@ -1,17 +1,15 @@
-image: debian/testing
+image: ubuntu/lts
 packages:
     - cargo
 sources:
     - https://git.sr.ht/~athorp96/cicd-example
 tasks:
  - install-rust: |
-    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-    rustup update
     rustup component add clippy
 
  - style: |
     cd cicd-example
-    cargo fmt
+    cargo fmt -- --check
 
  - lint: |
     cd cicd-example
