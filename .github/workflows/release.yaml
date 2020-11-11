@@ -1,0 +1,19 @@
+name: "Deploy to fake server"
+on:
+  push:
+    tags:
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Update rust
+        run: rustup update
+
+      - name: Build
+        run: cargo build
+
+      - name: Deploy
+        run: scp ./target/release/my-sorter fake-server
+
