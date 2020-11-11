@@ -1,6 +1,6 @@
 image: ubuntu/lts
 packages:
-    - cargo
+    - curl
 sources:
     - https://git.sr.ht/~athorp96/cicd-example
 tasks:
