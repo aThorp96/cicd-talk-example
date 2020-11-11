@@ -1,0 +1,29 @@
+name: Push
+on:
+  push:
+jobs:
+  format:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Update rust
+        run: rustup update
+
+      - name: Install rustfmt
+        run: rustup component add rustfmt
+
+      - name: Check formatting
+        run: cargo fmt -- --check
+
+  tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+
+      - name: Update rust
+        run: rustup update
+
+      - name: Run tests
+        run: cargo test
+

@@ -4,6 +4,13 @@ packages:
 sources:
     - https://git.sr.ht/~athorp96/cicd-example
 tasks:
+ - install-rust:
+     curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs > install.sh
+     chmod +x install.sh
+     ./install.sh -y
+     rustup component add clippy
+     rustup component add rustfmt
+
  - style: |
     cd cicd-example
     cargo fmt -- --check
