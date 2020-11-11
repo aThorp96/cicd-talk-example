@@ -1,7 +1,6 @@
 image: debian/testing
 packages:
     - cargo
-    - rustup
 sources:
     - https://git.sr.ht/~athorp96/cicd-example
 tasks:
