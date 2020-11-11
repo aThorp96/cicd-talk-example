@@ -1,0 +1,33 @@
+image: debian/testing
+packages:
+    - cargo
+    - rustup
+sources:
+    - https://git.sr.ht/~athorp96/cicd-example
+tasks:
+ - install-rust: |
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+    rustup update
+    rustup component add clippy
+
+ - style: |
+    cd cicd-example
+    cargo fmt
+
+ - lint: |
+    cd cicd-example
+    cargo
+
+ - test: |
+    cd cicd-example
+    cargo test
+
+ - build-release: |
+    cd cicd-xample
+    if ! git describe --tags --exact-match HEAD; then exit 0; fi
+    cargo build --release
+
+ - deploy: |
+    cd cicd-example
+    if ! git describe --tags --exact-match HEAD; then exit 0; fi
+    scp target/releases/my-sorter this-could-be-the-student-machine
