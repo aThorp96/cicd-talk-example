@@ -13,16 +13,15 @@ pub fn sort(list: Vec<isize>) -> Vec<isize> {
     mergesort(list)
 }
 
-
 /// Sort a vector using bubble sort
 #[warn(dead_code)]
-fn bubblesort<T: Ord>(mut list: Vec<T>) -> Vec<T>{
+fn bubblesort<T: Ord>(mut list: Vec<T>) -> Vec<T> {
     Vec::new()
 }
 
 /// Sort a vector using merge sort
 #[warn(dead_code)]
-fn mergesort<T: Ord + Clone + Copy>(mut list: Vec<T>) -> Vec<T>{
+fn mergesort<T: Ord + Clone + Copy>(mut list: Vec<T>) -> Vec<T> {
     Vec::new()
 }
 
@@ -55,10 +54,6 @@ fn main() {
     }
 }
 
-
-
-
-
 #[cfg(test)]
 extern crate quickcheck;
 #[cfg(test)]
@@ -78,7 +73,12 @@ mod tests {
 
         for i in 0..(result.len() - 2) {
             if result[i] > result[i + 1] {
-                println!("Found error at index {}: {} > {}", i, result[i], result[i + 1]);
+                println!(
+                    "Found error at index {}: {} > {}",
+                    i,
+                    result[i],
+                    result[i + 1]
+                );
                 return false;
             }
         }
