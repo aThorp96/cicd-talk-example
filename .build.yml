@@ -4,16 +4,9 @@ packages:
 sources:
     - https://git.sr.ht/~athorp96/cicd-example
 tasks:
- - install-rust: |
-    rustup component add clippy
-
  - style: |
     cd cicd-example
     cargo fmt -- --check
-
- - lint: |
-    cd cicd-example
-    cargo
 
  - test: |
     cd cicd-example
