@@ -13,6 +13,7 @@ pub fn sort(list: Vec<isize>) -> Vec<isize> {
     mergesort(list)
 }
 
+/**
 /// Sort a vector using bubble sort
 #[warn(dead_code)]
 fn bubblesort<T: Ord>(mut list: Vec<T>) -> Vec<T> {
@@ -34,6 +35,7 @@ fn bubblesort<T: Ord>(mut list: Vec<T>) -> Vec<T> {
     }
     list
 }
+**/
 
 /// Sort a vector using merge sort
 #[warn(dead_code)]
@@ -54,23 +56,23 @@ fn mergesort<T: Ord + Clone + Copy>(mut list: Vec<T>) -> Vec<T> {
     while i < left.len() && j < right.len() {
         if left[i] < right[j] {
             list[k] = left[i];
-            i = i + 1;
+            i += 1;
         } else {
             list[k] = right[j];
-            j = j + 1
+            j += 1
         }
-        k = k + 1;
+        k += 1;
     }
 
     while i < left.len() {
         list[k] = left[i];
-        i = i + 1;
-        k = k + 1;
+        i += 1;
+        k += 1;
     }
     while j < right.len() {
         list[k] = right[j];
-        j = j + 1;
-        k = k + 1;
+        j += 1;
+        k += 1;
     }
 
     list
