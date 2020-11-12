@@ -10,13 +10,29 @@ fn generate_random_vector(n: isize) -> Vec<isize> {
 }
 
 pub fn sort(list: Vec<isize>) -> Vec<isize> {
-    mergesort(list)
+    bubblesort(list)
 }
 
 /// Sort a vector using bubble sort
 #[warn(dead_code)]
 fn bubblesort<T: Ord>(mut list: Vec<T>) -> Vec<T> {
-    Vec::new()
+    let mut sorted: bool;
+
+    if list.len() > 1 {
+		loop {
+			sorted = true;
+			for i in 0..list.len() - 1 {
+				if i + 1 < list.len() && list[i] > list[i + 1] {
+    				sorted = false;
+    				list.swap(i, i + 1);
+				}
+			}
+			if sorted {
+    			break;
+			}
+		}
+    }
+    list
 }
 
 /// Sort a vector using merge sort
