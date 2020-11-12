@@ -19,18 +19,18 @@ fn bubblesort<T: Ord>(mut list: Vec<T>) -> Vec<T> {
     let mut sorted: bool;
 
     if list.len() > 1 {
-		loop {
-			sorted = true;
-			for i in 0..list.len() - 1 {
-				if i + 1 < list.len() && list[i] > list[i + 1] {
-    				sorted = false;
-    				list.swap(i, i + 1);
-				}
-			}
-			if sorted {
-    			break;
-			}
-		}
+        loop {
+            sorted = true;
+            for i in 0..list.len() - 1 {
+                if i + 1 < list.len() && list[i] > list[i + 1] {
+                    sorted = false;
+                    list.swap(i, i + 1);
+                }
+            }
+            if sorted {
+                break;
+            }
+        }
     }
     list
 }
