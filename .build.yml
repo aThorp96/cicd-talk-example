@@ -22,7 +22,7 @@ tasks:
     cargo test
 
  - build-release: |
-    cd cicd-xample
+    cd cicd-example
     if ! git describe --tags --exact-match HEAD; then exit 0; fi
     cargo build --release
 
