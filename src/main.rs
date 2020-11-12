@@ -10,7 +10,7 @@ fn generate_random_vector(n: isize) -> Vec<isize> {
 }
 
 pub fn sort(list: Vec<isize>) -> Vec<isize> {
-    bubblesort(list)
+    mergesort(list)
 }
 
 /// Sort a vector using bubble sort
@@ -38,7 +38,42 @@ fn bubblesort<T: Ord>(mut list: Vec<T>) -> Vec<T> {
 /// Sort a vector using merge sort
 #[warn(dead_code)]
 fn mergesort<T: Ord + Clone + Copy>(mut list: Vec<T>) -> Vec<T> {
-    Vec::new()
+    let mut left = list[..list.len() / 2].to_vec();
+    let mut right = list[list.len() / 2..].to_vec();
+
+    if left.len() > 1 {
+        left = mergesort(left.clone());
+    }
+    if right.len() > 1 {
+        right = mergesort(right.clone());
+    }
+
+    let mut i = 0;
+    let mut j = 0;
+    let mut k = 0;
+    while i < left.len() && j < right.len() {
+        if left[i] < right[j] {
+            list[k] = left[i];
+            i = i + 1;
+        } else {
+            list[k] = right[j];
+            j = j + 1
+        }
+        k = k + 1;
+    }
+
+    while i < left.len() {
+        list[k] = left[i];
+        i = i + 1;
+        k = k + 1;
+    }
+    while j < right.len() {
+        list[k] = right[j];
+        j = j + 1;
+        k = k + 1;
+    }
+
+    list
 }
 
 fn check_time(n: isize) {
